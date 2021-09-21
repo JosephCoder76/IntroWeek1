@@ -8,6 +8,16 @@ const { check, runTest, skipTest } = require("../../../test-api");
 
 function isBiggerThan10(num) {
   // checks if a number is strictly bigger than 10 and returns a message accordingly
+  let outputMessage;
+  if (num > 10){
+    outputMessage = "Number " + num +" is more than 10";
+  } else if(num === 10) {
+    outputMessage = "Number " + num +" is equal to 10";
+    }
+    else {
+    outputMessage = "Number " + num +" is less than 10";
+    }
+  return outputMessage;
 }
 
 runTest("isBiggerThan10() returns a message indicating if a number is bigger than 10", function () {
@@ -21,10 +31,20 @@ runTest("isBiggerThan10() returns a message indicating if a number is bigger tha
 
 function isFalsy(value) {
   // checks if a value is falsy and returns true if it is - returns false otherwise
+  //Define output variable
+  let output; 
+  if (value === true){
+     output = false
+   }
+   else {
+     output = true;
+   }
+   return output;
+
 }
 
 // Replace skipTest with runTest here to see the results of the test
-skipTest("isFalsy() returns true if a value is falsy and false if it is truthy", function () {
+runTest("isFalsy() returns true if a value is falsy and false if it is truthy", function () {
   check(isFalsy).whenCalledWith(false).returns(true);
   check(isFalsy).whenCalledWith("").returns(true);
   check(isFalsy).whenCalledWith(0).returns(true);
@@ -36,9 +56,25 @@ skipTest("isFalsy() returns true if a value is falsy and false if it is truthy",
 
 function readTrafficLight(lightColour) {
   // this function should check if the "traffic light colour" is red, green or amber and return a corresponding message
-}
+  // I solved this using an OR operator to resolve the differences in lower and upper case, but I could of also used
+  //to toLowerCase or toUpperCase to convert the lightColour paramater(string) passed to the function to be either
+  //upper or lower case so then we would not need to use the or operator just one of the conditions against lower or
+  //Upper case.
+  let message ="";
+  
+  if (lightColour === "green" || lightColour === "GREEN"){
+    message = "GO!";
+    }else if (lightColour === "amber" || lightColour === "AMBER"){
+    message = "GET READY..."
+    }else if (lightColour === "red" || lightColour === "RED"){
+    message = "STOP!"
+    }
 
-skipTest("readTrafficLight() should print a message according to the different colour passed in", function () {
+    return message;
+  }
+
+
+runTest("readTrafficLight() should print a message according to the different colour passed in", function () {
   check(readTrafficLight).whenCalledWith("green").returns("GO!");
   check(readTrafficLight).whenCalledWith("GREEN").returns("GO!");
 
@@ -51,9 +87,13 @@ skipTest("readTrafficLight() should print a message according to the different c
 
 function isMultipleOf6(num) {
   // isMultipleOf6 check if a passed value is a multiple of 6
+  if(num % 6 === 0){
+   return true;
+  }
+   return false;
 }
 
-skipTest("isMultipleOf6() should check if a number is divisible by 6", function () {
+runTest("isMultipleOf6() should check if a number is divisible by 6", function () {
   check(isMultipleOf6).whenCalledWith(6).returns(true);
 
   check(isMultipleOf6).whenCalledWith(10).returns(false);
@@ -68,7 +108,7 @@ function checkInfinitive(word) {
   // A French infinitive verb is a word that ends with either "re", "ir" or "er"
 }
 
-skipTest("checkInfinitive() checks if a french word is an infinitive", function () {
+runTest("checkInfinitive() checks if a french word is an infinitive", function () {
   check(checkInfinitive).whenCalledWith("manger").returns(true);
   check(checkInfinitive).whenCalledWith("faire").returns(true);
   check(checkInfinitive).whenCalledWith("aller").returns(true);
