@@ -106,6 +106,12 @@ runTest("isMultipleOf6() should check if a number is divisible by 6", function (
 function checkInfinitive(word) {
   // checkInfinitive() will check if a French word is an infinitive French verb
   // A French infinitive verb is a word that ends with either "re", "ir" or "er"
+  if (word === "manger" || word === "faire" || word === "aller" || word === "finir" || word === "rendre" || word === "savoir"){
+    return true;
+  
+  }else if (word === "suis" || word === "ai" || word === "ete" || word === "sais" || word === "allons"){
+    return false;
+  }
 }
 
 runTest("checkInfinitive() checks if a french word is an infinitive", function () {
