@@ -6,6 +6,7 @@ const filePath = "/Users/mitch/northcoders/remote_precourse/day_1/1_intro_string
 let lastForwardSlashIndex = filePath.lastIndexOf("/");
 
 // Use .slice() to access the directory at the end of filePath
+//NOTE I used the error log to understand that I needed to add one to the value of lastForwardSlashIndex as it was retrieves the \ character itself
 let currentDirectory = filePath.slice(lastForwardSlashIndex+1);
 
 console.log("currentDirectory is initialised with the name of the directory and the end of the filePath");
