@@ -1,6 +1,6 @@
 try {
   const letters = "abc";
-  letters(); // <- How would you describe what we're trying to do to letters here ? :🤔
+  letters(); // <- Call a function that does not exsist so we would get a Type error:🤔
   //Call the 
 } catch (error) {
   console.log(error, "<--- error");
