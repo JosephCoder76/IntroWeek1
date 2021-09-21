@@ -6,5 +6,5 @@
 //We will get a syntax error as we have not finished the const declaration with a closing "
 
 
-const name = "Samuel Caine;
+const name = "Samuel Caine";
 console.log(name);
