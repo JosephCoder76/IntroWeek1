@@ -208,9 +208,26 @@ function getOrdinalSuffix(num) {
   // E.g. "st" is an ordinal suffix as we'd write 1st etc
   // getOrdinalSuffix() should take a number and return the corresponding ordinal suffix
   // See here for more details: https://www.grammarly.com/blog/how-to-write-ordinal-numbers-correctly/
+  
+  //Lets deal with st instances first
+  if (num === 1 || num === 21 ){
+    return "st";
+  }
+  //Now nd
+  if (num === 2 || num === 22 || num === 32)
+  return "nd"
+
+  //Now rd
+  if (num === 3 || num === 23){
+    return "rd"
+  }
+  //All the th prefixes sit in a range of number so lets use fact to create an equation to take advantage of this and to reduce the code footprint
+  if (num >= 4 && num <= 20)
+  return "th"
+
 }
 
-skipTest("getOrdinalSuffix() should give the correct ordinal suffix for a number", function () {
+runTest("getOrdinalSuffix() should give the correct ordinal suffix for a number", function () {
   check(getOrdinalSuffix).whenCalledWith(1).returns("st");
   check(getOrdinalSuffix).whenCalledWith(2).returns("nd");
   check(getOrdinalSuffix).whenCalledWith(3).returns("rd");
