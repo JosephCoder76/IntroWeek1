@@ -2,6 +2,8 @@ const { check, printGreenMessage, printRedMessage } = require("../../../test-api
 
 function capitaliseString(string) {
   // return the passed string as upper case
+
+  return string.toUpperCase();
 }
 
 console.log("capitaliseString() can capitalise a single word");
