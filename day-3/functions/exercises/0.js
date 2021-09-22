@@ -1,7 +1,8 @@
 const { check, printGreenMessage, printRedMessage } = require("../../../test-api");
 
-function double() {
+function double(num) {
   // return any number doubled
+  return num * 2;
 }
 
 console.log("double() can double any number");
