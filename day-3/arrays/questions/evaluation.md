@@ -37,7 +37,7 @@ d) `4`
 
 &nbsp;
 
----
+--c-
 
 &nbsp;
 
@@ -67,7 +67,7 @@ d) `a`, `c`, `b`
 
 &nbsp;
 
----
+-a-
 
 &nbsp;
 
@@ -93,7 +93,7 @@ d) Won't work - will throw a `SyntaxError`
 
 &nbsp;
 
----
+-c-
 
 &nbsp;
 
@@ -123,7 +123,7 @@ d) `"a`" will be printed to the `console`
 
 &nbsp;
 
----
+-a-
 
 &nbsp;
 
@@ -151,7 +151,7 @@ d) `undefined`
 
 &nbsp;
 
----
+-b-
 
 &nbsp;
 
@@ -175,7 +175,7 @@ c) Will print `[]`
 
 d) Will throw an `Error`
 &nbsp;
-
+Answer a) undefined
 &nbsp;
 
 **Part 2** What will happen when the following piece of code is executed?
@@ -198,4 +198,4 @@ d) Will throw an `Error`
 
 &nbsp;
 
----
+-d-
