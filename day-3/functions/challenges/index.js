@@ -1,10 +1,14 @@
 const { check, printGreenMessage, printRedMessage } = require("../../../test-api");
 
-function modulo() {
+function modulo(num1, num2) {
   // return the remainder of the division a / b
+ 
+ return num1 % num2;
 }
 
+//console.log (modulo(10,2));
 console.log("modulo() gives the correct output");
+
 try {
   check(modulo).whenCalledWith(10, 2).returns(0);
   check(modulo).whenCalledWith(119, 10).returns(9);
@@ -16,8 +20,10 @@ try {
   printRedMessage(error);
 }
 
-function squareRoot() {
+function squareRoot(num) {
   // return the square root of n
+  return Math.sqrt(num);
+
 }
 
 console.log("squareRoot() works for positive integers");
@@ -33,8 +39,9 @@ try {
   printRedMessage(error);
 }
 
-function raiseToPower() {
+function raiseToPower(num, nth) {
   // return the result of raising m to the nth power
+  return num ** nth;
 }
 
 console.log("raiseToPower() raises given number to a power");
@@ -50,6 +57,10 @@ try {
 }
 
 // declare capitaliseFirstLetter here
+function capitaliseFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  
+}
 
 console.log("capitaliseFirstLetter() can capitalise the first letter in a string");
 try {
@@ -64,6 +75,13 @@ try {
 }
 
 // declare areValuesEqual here
+function areValuesEqual(val1, val2) {
+   if (val1 === val2){
+   return true;
+   }
+   return false;
+}
+
 
 // return true if the passed arguments are strictly equal
 // you can complete this problem without resorting to if statements
@@ -80,6 +98,12 @@ try {
 }
 
 // declare isFromThe60s here
+function isFromThe60s (year) {
+  //Tertiary operator
+  return (year < 1970 && year > 1959) ? true : false;
+   
+}
+
 
 // return true if the year is in the 1960's
 // returns false otherwise
@@ -102,6 +126,11 @@ try {
 }
 
 // declare isEvenLength here
+function isEvenLength(str) {
+ 
+  return (str.length % 2 === 0) ? true : false;
+
+}
 
 // return true if string has an even length
 // you can complete this problem without resorting to if statements
@@ -118,6 +147,12 @@ try {
 }
 
 // declare isAbsolutePath here
+function isAbsolutePath (str) {
+
+  return (str[0] === '/')  ? true : false;
+
+}
+
 
 // checks if a string is an absolute path - does it start with a /
 // HINT: all absolute file paths start with a /
@@ -136,6 +171,11 @@ try {
 }
 
 // declare getMiddle here
+function getMiddle(str) {
+
+  return str.length % 2 === 0 ? str[str.length / 2 - 1] + str[str.length / 2] : str[Math.floor(str.length / 2)];
+}
+
 
 // return the middle (or middle two) character(s) of the passed string
 // HINT: You could use the ternary operator for this challenge
@@ -164,6 +204,12 @@ try {
 
 // declare getCharCode here
 
+function getCharCode(char) {
+
+  let charCode = char.charCodeAt();
+  return "The ASCII character for " + char + " is " + charCode;
+}
+
 // returns a sentence stating the character code for a given character
 // Look up ASCII online to get a better idea of what a character code is
 // Look up a useful JavaScript method for dealing with charCodes !
@@ -185,6 +231,11 @@ try {
 }
 
 // declare createPercentage here
+function createPercentage(num1, num2) {
+  
+  return Math.round(num1 / num2 * 100) + "%";
+}
+
 
 // should take 2 numbers and work out their percentage
 
@@ -204,6 +255,14 @@ try {
 }
 
 // declare extractNumber here
+function extractNumber (str){
+ 
+  //Use the replace function with a regular expression which searches for all non digit characters and assigns them as a value to the num variable
+  //then we need to convert the num value from a string data type to an number data type using the parseInt method.
+  let num = str.replace(/\D/g, '');
+  return parseInt(num);
+}
+
 
 // should extract a number embedded in a string surrounded by ( ) parentheses
 
