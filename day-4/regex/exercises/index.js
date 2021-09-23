@@ -4,7 +4,7 @@ const { check, runTest, skipTest } = require("../../../test-api");
 
 runTest("Exercise 0", function () {
   function testCat(str) {
-    return YOUR_REGEX_HERE.test(str);
+    return /cat/.test(str);
   }
 
   // Replace YOUR_REGEX_HERE with a regular expression
@@ -23,13 +23,14 @@ runTest("Exercise 0", function () {
   check(testCat).whenCalledWith("12123ca234").returns(false);
 });
 
-skipTest("Exercise 1", function () {
+runTest("Exercise 1", function () {
   // Replace YOUR_REGEX_HERE with a regular expression
 
   // Your pattern should match a string containing at least 5 of the digits from 1 to 9 only
 
   function testAtLeast5Digits(str) {
-    return YOUR_REGEX_HERE.test(str);
+    //return true if we find 5 characters beteen the reg exp of 1-9 {} denotes a quantifier
+    return /[1-9]{5}/.test(str);
   }
 
   check(testAtLeast5Digits).whenCalledWith("12345").returns(true);
@@ -47,14 +48,14 @@ skipTest("Exercise 1", function () {
   check(testAtLeast5Digits).whenCalledWith("addc6826asd").returns(false);
 });
 
-skipTest("Exercise 2", function () {
+runTest("Exercise 2", function () {
   // Replace YOUR_REGEX_HERE with a regular expression
 
   // Your pattern should match one or more ! at the **beginning of a string**
   // You should look up regex anchors for this exercise !
 
   function testStartsWithExclaimMarks(str) {
-    return YOUR_REGEX_HERE.test(str);
+    return /^!/.test(str); //^ anchor for the start of the pattern to match
   }
 
   check(testStartsWithExclaimMarks).whenCalledWith("!!!sdlasjdlajsd").returns(true);
@@ -69,14 +70,18 @@ skipTest("Exercise 2", function () {
   check(testStartsWithExclaimMarks).whenCalledWith("cjljad!!!!!!").returns(false);
 });
 
-skipTest("Exercise 3", function () {
+runTest("Exercise 3", function () {
   // Replace YOUR_REGEX_HERE with a regular expression
 
   // Your pattern should match exactly 6 of a, b or c
   // You should look up regex anchors for this exercise !
 
   function testExact6ABCs(str) {
-    return YOUR_REGEX_HERE.test(str);
+    //[] everything is a one letter occurance, return a b or c first occurance,
+    //{} number looking for 6 characters between a and c
+    //^ $ 6 abc at the beginning and end, if you find 6 occurances of a b or then 
+    //return true else return false
+    return /^[abc]{6}$/.test(str);
   }
 
   check(testExact6ABCs).whenCalledWith("abcabc").returns(true);
@@ -92,14 +97,18 @@ skipTest("Exercise 3", function () {
   check(testExact6ABCs).whenCalledWith("abca").returns(false);
 });
 
-skipTest("Exercise 4", function () {
+runTest("Exercise 4", function () {
   // Replace YOUR_REGEX_HERE with a regular expression
 
   // Your pattern should match any string containing *exactly* 2 consecutive letter l's
   // n.b. exactly 2 means that 3 or more consecutive l's are not allowed.
 
   function testExact2ConsecutiveLs(str) {
-    return YOUR_REGEX_HERE.test(str);
+    //Starts athe beginning with ^ anchor find a string that starts with mystery number of chars
+    //that arent an l [^l], then then epext 2 ll sequentially, then look for any number of 
+    //chars that are not l
+    //From left to right, ignore l, accept 2 lls, ignore any ls after 2
+    return /^[^l]*ll[^l]*$/.test(str);
   }
 
   check(testExact2ConsecutiveLs).whenCalledWith("hello").returns(true);
