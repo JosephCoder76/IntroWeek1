@@ -65,39 +65,70 @@ runTest("mergeArrays() will concatenate two arrays together", function () {
 
 // if an array is like a sandwich, the first and last items are the bread
 // getSandwichFilling() should return an array with the filling of the sandwich
+   function getSandwichFilling(arr){
+    arr.pop();
+    arr.shift();
+    return arr;
+   }
 
-skipTest("getSandwichFilling() returns the inner elements of an array", function () {
+runTest("getSandwichFilling() returns the inner elements of an array", function () {
   check(getSandwichFilling).whenCalledWith(["a", "b", "c", "d"]).returns(["b", "c"]);
   check(getSandwichFilling).whenCalledWith([10, 20, 30, 40, 50, 60]).returns([20, 30, 40, 50]);
   check(getSandwichFilling).whenCalledWith(["northcoders", "are", "the", "best"]).returns(["are", "the"]);
 });
 
 // isEmptyArray() should return a boolean checking if an array is empty
+    function isEmptyArray(arr){
+      if (arr > []){
+      return false;
+     }
+      return true;
+  }
 
-skipTest("isEmptyArray() checks if an array is empty", function () {
+runTest("isEmptyArray() checks if an array is empty", function () {
   check(isEmptyArray).whenCalledWith([]).returns(true);
   check(isEmptyArray).whenCalledWith(["a", "b", "c", "d"]).returns(false);
   check(isEmptyArray).whenCalledWith(["a"]).returns(false);
 });
 
 // howManyArguments() should return the number of arguments passed into the function
-// HINT: For this one you should look up 'rest parameters' online - MDN Web Docs and devdocs are excellent sources of JavaScript documentation
+// HINT: For this one you should look up 'rest parameters' online - 
+//MDN Web Docs and devdocs are excellent sources of JavaScript documentation
+//Rest operator changes the paramter in to an array
+    function howManyArguments(...arr) {
+      
+      console.log(arr);//console.log array
+      console.log(...arr); //Now we use the sprecdad operator to return all the elements of the array
+      //If we have a multi dimensional array then the rest operator flattens to 1 dimensions
+      return arr.length;
+    }
 
-skipTest("howManyArguments() returns the number of items passed on a single call", function () {
+
+
+runTest("howManyArguments() returns the number of items passed on a single call", function () {
   check(howManyArguments).whenCalledWith("a", "b", "c").returns(3);
   check(howManyArguments).whenCalledWith().returns(0);
   check(howManyArguments).whenCalledWith(1, 2, 3, 4, 5).returns(5);
   check(howManyArguments).whenCalledWith("the", "meaning", "of", "life", "is", 42).returns(6);
 });
 
-// updatePosition() takes an array representing coordinates - an x position and a y position - and a direction. It should return a new pair of coordinates with the coordinates array updated by moving either 1 unit in a particular direction.
+// updatePosition() takes an array representing coordinates - an x position and a y 
+//position - and a direction. It should return a new pair of coordinates 
+//with the coordinates array updated by moving either 1 unit in a particular direction.
 
 // If direction is up it should move 1 unit up (+ 1 in the y direction)
 // If the direction is down it should move 1 unit down (- 1 in the y direction)
 // If the direction is right it should move 1 unit right (+ 1 in the x direction)
 // If the direction is left it should move 1 unit left (- 1 in the x direction)
+    function updatePosition() {
 
-skipTest("updatePosition() updates a co-ordinates array", function () {
+
+
+      return
+    }
+
+
+runTest("updatePosition() updates a co-ordinates array", function () {
   check(updatePosition).whenCalledWith([10, 10], "up").returns([10, 11]);
   check(updatePosition).whenCalledWith([0, 0], "down").returns([0, -1]);
   check(updatePosition).whenCalledWith([3, 3], "left").returns([2, 3]);
