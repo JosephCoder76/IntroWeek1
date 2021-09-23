@@ -11,7 +11,12 @@ You can assume that the only operation connecting the terms is addition.
 
 // Once you have passed the current test, change skipTest on the following test to runTest so you are able to run it with Node
 
-function collectLikeTerms() {}
+function collectLikeTerms(str) {
+  let count = (str.match(/\,/g) || []).length;
+
+  return count;
+
+}
 
 runTest("returns a letter when passed an expression with a single letter", function () {
   check(collectLikeTerms).whenCalledWith("a").returns("a");
