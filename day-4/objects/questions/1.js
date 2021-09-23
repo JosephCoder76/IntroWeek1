@@ -4,3 +4,4 @@ myDetails();
 
 // What will happen when this file is executed with Node?
 // What is the problem with this code?
+//Error TypeOf myDetails is not a function
