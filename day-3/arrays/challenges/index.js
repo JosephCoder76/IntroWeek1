@@ -4,6 +4,10 @@ const { check, runTest, skipTest } = require("../../../test-api");
 // Once you have passed the current test, change skipTest on the following test to runTest so you are able to run it with Node
 
 // getLastItem() should return the last item from an array
+ function getLastItem(arr){
+   let lastItem = arr.pop();
+   return lastItem;
+ }
 
 runTest("getLastItem() returns the last item in an array", function () {
   check(getLastItem).whenCalledWith(["a", "b", "c", "d"]).returns("d");
@@ -11,24 +15,49 @@ runTest("getLastItem() returns the last item in an array", function () {
 });
 
 // getLastNItems() return an array with the last n items of the array
+//NOTE to self that when you use a negative value for the start of the slice it removes from the
+//end x number what you specify where as with positive it starts from said position to the end of the
+//array
+function getLastNItems(arr,num){
+   
+   return (num > 0) ? arr.slice(-num) : [];
+}
 
-skipTest("getLastNItems() returns the last n items in an array", function () {
+runTest("getLastNItems() returns the last n items in an array", function () {
   check(getLastNItems).whenCalledWith(["a", "b", "c", "d"], 2).returns(["c", "d"]);
   check(getLastNItems).whenCalledWith(["apple", "banana", "pear", "kiwi"], 0).returns([]);
   check(getLastNItems).whenCalledWith(["apple", "banana", "pear", "kiwi"], 3).returns(["banana", "pear", "kiwi"]);
 });
 
-// removeItem() returns a new array without the item on position 'n', effectively removing it from the array
+// removeItem() returns a new array without the item on position 'n', 
+// effectively removing it from the array
+   function removeItem(arr, n){
+    const output = [];
+    for (let i = 0; i < arr.length; i++ ){
+        if (arr.indexOf(arr[i]) !== n){
+        output.push(arr[i]);
+      }
+    }
+     return output;
+   }
 
-skipTest("removeItem() removes an item at a given index", function () {
+runTest("removeItem() removes an item at a given index", function () {
   check(removeItem).whenCalledWith(["a", "b", "c", "d"], 2).returns(["a", "b", "d"]);
   check(removeItem).whenCalledWith(["a", "b", "c", "d"], 0).returns(["b", "c", "d"]);
   check(removeItem).whenCalledWith(["a", "b", "c", "d"], 1).returns(["a", "c", "d"]);
 });
 
 // mergeArrays() returns a new array containing all of arr1 and arr2's elements
+function mergeArrays(arr1, arr2){
+ 
+  const merged = arr1.concat(arr2);
+ 
+  return merged;
 
-skipTest("mergeArrays() will concatenate two arrays together", function () {
+}
+
+
+runTest("mergeArrays() will concatenate two arrays together", function () {
   check(mergeArrays).whenCalledWith(["a", "b"], ["c", "d"]).returns(["a", "b", "c", "d"]);
   check(mergeArrays).whenCalledWith([1], [3, 5, 7]).returns([1, 3, 5, 7]);
   check(mergeArrays).whenCalledWith(["x", "y", "z"], [1, 2, 3, 4]).returns(["x", "y", "z", 1, 2, 3, 4]);
