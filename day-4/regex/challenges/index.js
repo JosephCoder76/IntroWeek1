@@ -7,6 +7,19 @@ const { check, runTest, skipTest } = require("../../../test-api");
 
 // Declare a function extractCode that extracts a number from a string
 // Use the assertions below to help guide you in your logic
+    function extractCode(str){
+     //Set up a regex \d all the digits, + operator 1 more occurances
+      let regEx = /\d+/;
+     //use the match method to return an array of all the numbers together ina  single index 
+     //as one element value, so if the numbers were seperated then we would have multiple
+     //indexes 
+     let number = str.match(regEx);
+     
+     //Now we need to convert the string data type to a Number data type using parseInt
+     return parseInt(number); 
+
+    }
+
 
 runTest("extractCode() can find the total from a single code string", function () {
   check(extractCode).whenCalledWith("abcd67yuio").returns(67);
@@ -16,9 +29,18 @@ runTest("extractCode() can find the total from a single code string", function (
 });
 
 // Declare and implement a function isValidSortCode
-// Checks if a passed string is a valid sort code - this should be in the form 2 digits hyphen 2 digits hyphen 2 digits
+// Checks if a passed string is a valid sort code - 
+//this should be in the form 2 digits hyphen 2 digits hyphen 2 digits
+    function isValidSortCode(sortcode){
+    let regEx = /^\d{2}[-]\d{2}[-]\d{2}$/;
+    
+    let result = regEx.test(sortcode);
+    
+    return result;
 
-skipTest("isValidSortCode() should check is a sort code string is in the correct format", function () {
+
+    }
+runTest("isValidSortCode() should check is a sort code string is in the correct format", function () {
   check(isValidSortCode).whenCalledWith("10-34-67").returns(true);
   check(isValidSortCode).whenCalledWith("51-34-58").returns(true);
   check(isValidSortCode).whenCalledWith("85-16-23").returns(true);
@@ -32,8 +54,17 @@ skipTest("isValidSortCode() should check is a sort code string is in the correct
 
 // Declare and implement a function isProfessionalEmail
 // Returns true if the email text is professional (does not end in a kiss - 'x')
+    function isProfessionalEmail(email) {
+     let regEx = /[x$]/;
 
-skipTest("isProfessionalEmail() checks if an email ends with an x", function () {
+     let result = regEx.test(email);
+
+     return result;
+
+    }
+
+
+runTest("isProfessionalEmail() checks if an email ends with an x", function () {
   check(isProfessionalEmail).whenCalledWith("x").returns(false);
   check(isProfessionalEmail).whenCalledWith("Dear Sir/Madam").returns(true);
   check(isProfessionalEmail).whenCalledWith("Dear Alex, How are you?").returns(true);
